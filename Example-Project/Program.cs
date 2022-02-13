@@ -13,7 +13,7 @@ namespace Example_Project
             dict.Add("C", "D");
             dict.Add("E", "F");
             dict.Add("G", "H");
-            //dict.PrintAll(); //Print all of the Contents in the Array to the Console
+            dict.PrintAll(); //Print all of the Contents in the Array to the Console
             Console.WriteLine(dict.ToString()); //Testing the ToString Function
 
             intdict.Add("A", 2); //Adding a Key-Value pair (A = Key, 2 = Value)
@@ -29,7 +29,7 @@ namespace Example_Project
             dict.RemoveAt(3); //Remove Key-Value pair at index 3
             dict.RemoveItem("E"); //Remove Key-Value pair with Key E (E, F)
             dict.RemoveItemByVal("D"); //Key-Value pair with Value D (C, D)
-            //dict.PrintAll();
+            dict.PrintAll();
 
 
         }

@@ -151,5 +151,13 @@ namespace CSDict
             }
             return true;
         }
+
+        //Implementation of a destructor that just null-ifies the dictionary when it goes out of scope
+        ~Dictionary(){
+            for (int i = 0; i < this.Key.Count(); i++){
+                this.Key[i] = null;
+                this.Val[i] = default(T);
+            }
+        }
     }
 }
