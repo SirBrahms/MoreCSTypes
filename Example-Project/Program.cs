@@ -1,4 +1,5 @@
 ﻿using System;
+using CSDict;
 
 namespace Example_Project
 {
@@ -7,6 +8,7 @@ namespace Example_Project
         static void Main(string[] args)
         {
             Console.WriteLine("Hello World!");
+            Dictionary.Test();
         }
     }
 }
