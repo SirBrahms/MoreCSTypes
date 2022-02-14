@@ -245,7 +245,7 @@ namespace CSTypes
         ~FIFOQueue(){
             for (int i = 0; i < this.Queue.Count(); i++)
             {
-                this.Queue[i] = default(T)
+                this.Queue[i] = default(T);
             }
         }        
     }
