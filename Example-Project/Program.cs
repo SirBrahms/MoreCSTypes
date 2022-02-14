@@ -33,7 +33,7 @@ namespace Example_Project
             dict.PrintAll();
             */
 
-            /* FIFOQueue Testing  */
+            /* FIFOQueue Testing
             FIFOQueue<string> queue1 = new FIFOQueue<string>(); //Creating a FIFOQueue of type string
             FIFOQueue<int> queue2 = new FIFOQueue<int>(); //Creating a FIFOQueue of type int
             FIFOQueue<Object> queue3 = new FIFOQueue<Object>(); //Creating a FIFOQueue of type Object
@@ -59,6 +59,16 @@ namespace Example_Project
 
             Console.WriteLine("Count queue2: " + queue2.Count().ToString()); //Will print the Count of Elements in the Queue to the Console (2)
             Console.WriteLine("Count queue3: " + queue3.Count().ToString()); //Will print the Count of Elements in the Queue to the Console (empty Queues return 0)
+            */
+
+            /* Stack Testing */
+            Stack<int> stck = new Stack<int>(); //Creating a Stack of type int
+            Stack<string> stck2 = new Stack<string>(); //Creating a Stack of type string
+
+            stck.Add(1); //Adding the Value 1 to the Stack
+            stck.Add(2); //Adding the Value 2 to the Stack
+            stck.Add(3); //Adding the Value 3 to the Stack
+
             
         }
     }

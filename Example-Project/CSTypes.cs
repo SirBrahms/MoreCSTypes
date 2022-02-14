@@ -161,7 +161,6 @@ namespace CSTypes
             }
         }
     }
-
     class FIFOQueue <T>
     {
         public readonly List<T> Queue = new List<T>(); //The list that holds the entire Queue
@@ -248,5 +247,44 @@ namespace CSTypes
                 this.Queue[i] = default(T);
             }
         }        
+    }
+    class Stack <T>
+    {
+        public readonly List<T> Stck = new List<T>(); //List to hold the Stack
+
+        //Method to add an Element to a Stack
+        public void Add(T item){
+            this.Stck.Add(item);
+        }
+
+        //Method to Pop the Last Element of the Stack
+        public T Pop(){
+            try
+            {
+                T temp = this.Stck[0];
+                this.Stck.RemoveAt(0);
+                return temp;
+            }
+            catch (ArgumentOutOfRangeException ex)
+            {
+                throw new ArgumentException("Index was out of Range or Stack was empty", ex);
+            }
+        }
+
+        //Override of the .ToString method: returns the entire stack seperated by Commas
+        public override string ToString(){
+            string full = "";
+            for (int i = 0; i < this.Stck.Count(); i++)
+            {
+                if(i == this.Stck.Count() - 1){
+                    full += this.Stck[i];
+                }
+                else{
+                    full += this.Stck[i] + ",";
+                }
+            }
+
+            return full;
+        }
     }
 }
