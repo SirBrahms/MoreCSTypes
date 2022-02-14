@@ -2,6 +2,13 @@ using System;
 using System.Linq;
 using System.Collections.Generic;
 
+/*
+    MoreCSTypes by SirBrahms
+    Github: https://github.com/SirBrahms/MoreCSTypes
+    Latest Release: https://github.com/SirBrahms/MoreCSTypes/releases/latest
+    If you have any issues open one on the designated tab in Github
+*/
+
 namespace CSTypes
 {
     class Dictionary <T> 
