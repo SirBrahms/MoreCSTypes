@@ -65,11 +65,14 @@ namespace Example_Project
             Stack<int> stck = new Stack<int>(); //Creating a Stack of type int
             Stack<string> stck2 = new Stack<string>(); //Creating a Stack of type string
 
-            stck.Add(1); //Adding the Value 1 to the Stack
-            stck.Add(2); //Adding the Value 2 to the Stack
-            stck.Add(3); //Adding the Value 3 to the Stack
+            stck.Push(1); //Adding the Value 1 to the Stack
+            stck.Push(2); //Adding the Value 2 to the Stack
+            stck.Push(3); //Adding the Value 3 to the Stack
 
-            
+            Console.WriteLine(stck.Pop().ToString()); //Getting the first Element on the Stack (3), and then printing it to the Console
+            Console.WriteLine(stck.ToString()); //Printing the entire Stack, seperated by commas, to the Console (1,2)
+
+
         }
     }
 }

@@ -1,0 +1,48 @@
+C# - Try to implement Stack operations (Math) with unknown types
+
+private readonly Type[] AllowedTypes = new Type[] {typeof(string), typeof(int), typeof(decimal), typeof(double), typeof(long), typeof(bool)};
+
+/* Stack Arithmetics */
+
+        //Implementation of a Addition-Function that adds the first two values on the Stack
+        private void Operate(){
+            try
+            {
+                Type t = typeof(T);
+                if(AllowedTypes.Contains(t)){
+                    if(t == typeof(string)){
+                        string op1 = this.Stck[this.Stck.Count() - 1].ToString();
+                        string op2 = this.Stck[this.Stck.Count() - 2].ToString();
+                        op1 += op2;
+                        this.Stck.RemoveAt(this.Stck.Count() - 1);
+                        this.Stck.RemoveAt(this.Stck.Count() - 2);
+                        this.Stck.Add(T.Parse(op1));
+                    }
+                    else if(t == typeof(int)){
+                        int op1 = int.Parse(this.Stck[this.Stck.Count() - 1].ToString());
+                        int op2 = int.Parse(this.Stck[this.Stck.Count() - 2].ToString());
+                    }
+                    else if(t == typeof(double)){
+                        double op1 = double.Parse(this.Stck[this.Stck.Count() - 1].ToString());
+                        double op2 = double.Parse(this.Stck[this.Stck.Count() - 2].ToString());
+                    }
+                    else if(t == typeof(long)){
+                        long op1 = long.Parse(this.Stck[this.Stck.Count() - 1].ToString());
+                        long op2 = long.Parse(this.Stck[this.Stck.Count() - 2].ToString());
+                    }
+                    else if(t == typeof(decimal)){
+                        decimal op1 = decimal.Parse(this.Stck[this.Stck.Count() - 1].ToString());
+                        decimal op2 = decimal.Parse(this.Stck[this.Stck.Count() - 2].ToString());
+                    }
+                    else if(t == typeof(bool)){
+                        bool op1 = bool.Parse(this.Stck[this.Stck.Count() - 1].ToString());
+                        bool op2 = bool.Parse(this.Stck[this.Stck.Count() - 2].ToString());
+                    }
+                }
+                
+            }
+            catch (Exception ex)
+            {
+                throw new ArgumentException("", ex);
+            }
+        }
