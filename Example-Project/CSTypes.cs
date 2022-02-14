@@ -7,7 +7,7 @@ namespace CSTypes
     class Dictionary <T> 
     {
         public readonly List<string> Key = new List<string>(); //List for holding Keys
-        public readonly List<T> Val = new List<T>(); //List for holding the Values (Can be of any type, only one per object)
+        public readonly List<T> Val = new List<T>(); //List for holding the Values (Can be of any type, only one per Queueect)
 
         //Add a Key-Value pair
         public void Add(string key, T val){
@@ -49,7 +49,14 @@ namespace CSTypes
 
         //Implementation of a .Count method, that returns how many Key-Value Pairs are within a dictionary
         public int Count(){
-            return this.Key.Count();
+            try
+            {
+                return this.Key.Count();
+            }
+            catch
+            {
+                return 0;
+            }
         }
 
         //Implementation of a .RemoveAt method, that removes elements at a certain index
@@ -125,15 +132,9 @@ namespace CSTypes
             return FullStr;
         }
 
-        /*  Implementation of the .Equals Function
-            <S> must be the same type as the Compared dictionary, for example:
-        
-            Dictionary<int> mydict = new Dictionary<int>();
-            Dictionary<string> mydict2 = new Dictionary<string>();
-            if(mydict.Equals<string>(mydict2)){...}
-        */
-        public bool Equals <S> (Dictionary<S> dict){
-            if(dict == null || GetType() != dict.GetType() || dict.Count() != this.Count() || typeof(S).ToString() != typeof(T).ToString()){
+        //Implementation of the .Equals Function
+        public bool Equals(Dictionary<T> dict){
+            if(dict == null || GetType() != dict.GetType() || dict.Count() != this.Count()){
                 return false;
             }
             
@@ -159,5 +160,86 @@ namespace CSTypes
                 this.Val[i] = default(T);
             }
         }
+    }
+
+    class FIFOQueue <T>
+    {
+        public readonly List<T> Queue = new List<T>(); //The list that holds the entire Queue
+
+        //A function to add a Value to the Queue
+        public void Add(T val){
+            this.Queue.Add(val);
+        }
+
+        //A function to retrieve the first Element of the Queue and then delete it (similar to pop())
+        public T Pop(){
+            try
+            {
+                T temp = this.Queue[0];
+                this.Queue.RemoveAt(0);
+                return temp;
+            }
+            catch (ArgumentOutOfRangeException ex)
+            {
+                throw new ArgumentException("Index was out of Range or Queue was empty", ex);
+            }
+        }
+
+        //A function to retrieve the first Element of the Queue without deleting it
+        public T Get(){
+            try
+            {
+                return this.Queue[0];
+            }
+            catch (ArgumentOutOfRangeException ex)
+            {              
+                throw new ArgumentException("Queue was empty", ex);
+            }
+        }
+
+        //Override of the .ToString method, returns the entire Queue seperated by Commas
+        public override string ToString(){
+            string full = "";
+            for (int i = 0; i < this.Queue.Count(); i++)
+            {
+                if(i == this.Queue.Count() - 1){
+                    full += this.Queue[i].ToString();
+                }
+                else{
+                    full += this.Queue[i].ToString() + ",";
+                }
+            }
+
+            return full;
+        }
+
+        //Implementation of a .Count method that returns how many elements there are in the Queue
+        public int Count(){
+            try
+            {
+                return this.Queue.Count();
+            }
+            catch
+            {
+                return 0;
+            }
+        }
+
+        //Implementation of a .Equals method
+        public bool Equals(FIFOQueue<T> Queue)
+        {            
+            if (Queue == null || GetType() != Queue.GetType() || this.Count() != Queue.Count()){
+                return false;
+            }
+            
+            for (int i = 0; i < this.Queue.Count(); i++){
+                if(!this.Queue[i].Equals(Queue.Queue[i])){
+                    return false;
+                }
+            }
+
+            return true;
+        }
+        
     }
 }
