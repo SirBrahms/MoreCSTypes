@@ -2,7 +2,7 @@ using System;
 using System.Linq;
 using System.Collections.Generic;
 
-namespace CSDict
+namespace CSTypes
 {
     class Dictionary <T> 
     {

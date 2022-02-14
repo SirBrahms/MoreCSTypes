@@ -1,5 +1,5 @@
 ﻿using System;
-using CSDict;
+using CSTypes;
 
 namespace Example_Project
 {
@@ -7,6 +7,7 @@ namespace Example_Project
     {
         static void Main(string[] args)
         {
+            /* Dictionary-Testing
             Dictionary<string> dict = new Dictionary<string>(); //Creating a dictionary of type string
             Dictionary<int> intdict = new Dictionary<int>(); //Creating a dictionary of type int
             dict.Add("A", "B"); //Adding a Key-Value pair (A = Key, B = Value)
@@ -30,7 +31,7 @@ namespace Example_Project
             dict.RemoveItem("E"); //Remove Key-Value pair with Key E (E, F)
             dict.RemoveItemByVal("D"); //Key-Value pair with Value D (C, D)
             dict.PrintAll();
-
+            */
 
         }
     }
