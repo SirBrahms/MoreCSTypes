@@ -64,6 +64,7 @@ namespace Example_Project
             /* Stack Testing */
             Stack<int> stck = new Stack<int>(); //Creating a Stack of type int
             Stack<string> stck2 = new Stack<string>(); //Creating a Stack of type string
+            Stack<int> stckLim = new Stack<int>(2); //Creating a Stack with a limit of 2
 
             stck.Push(1); //Adding the Value 1 to the Stack
             stck.Push(2); //Adding the Value 2 to the Stack
@@ -71,6 +72,11 @@ namespace Example_Project
 
             Console.WriteLine(stck.Pop().ToString()); //Getting the first Element on the Stack (3), and then printing it to the Console
             Console.WriteLine(stck.ToString()); //Printing the entire Stack, seperated by commas, to the Console (1,2)
+
+            Console.WriteLine(stckLim.isEmpty().ToString()); //Checking if the Stack is empty and printing it to the Console (true)
+            stckLim.Push(1);
+            stckLim.Push(2);
+            Console.WriteLine(stckLim.isFull().ToString()); //Checking if the Stack is full and then printing it to the Console (true)
 
 
         }

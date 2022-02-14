@@ -259,9 +259,28 @@ namespace CSTypes
     class Stack <T>
     {
         public readonly List<T> Stck = new List<T>(); //List to hold the Stack
+        public readonly bool Fix = false; //Bool for indicating if the Stack has a fixed size
+        public readonly int Limit = new int(); //Int for keeping track of the limit
+        private int InternalSize = new int(); //Int for keeping track of the current size of the stack
+
+        //empty Constructor for Dynamic Stacks
+        public Stack(){return;}
+        
+        //Int Constructor for fixed-size Stacks
+        public Stack(int limit){
+            this.Fix = true;
+            this.Limit = limit;
+            this.InternalSize = 0;
+        }
 
         //Method to add an Element to a Stack
         public void Push(T item){
+            if(Fix && Limit == InternalSize){
+                throw new OverflowException("Limit Size Exceeded");
+            }
+            else if(Fix){
+                this.InternalSize++;
+            }
             this.Stck.Add(item);
         }
 
@@ -271,7 +290,25 @@ namespace CSTypes
             {
                 T temp = this.Stck[this.Stck.Count() - 1];
                 this.Stck.RemoveAt(this.Stck.Count() - 1);
+                if(Fix){
+                    this.InternalSize--;
+                }
                 return temp;
+            }
+            catch (ArgumentOutOfRangeException ex)
+            {
+                throw new ArgumentException("Index was out of Range or Stack was empty", ex);
+            }
+        }
+
+        //Method to Return the Last Element of the Stack but don't delete it
+        public T Peek(){
+            try
+            {
+                if(Fix){
+                    this.InternalSize--;
+                }
+                return this.Stck[this.Stck.Count() - 1];
             }
             catch (ArgumentOutOfRangeException ex)
             {
@@ -302,6 +339,16 @@ namespace CSTypes
         //Method to get the Type of Stack
         public Type GetStackType(){
             return typeof(T);
+        }
+
+        //Method to return if the Stack is empty
+        public bool isEmpty(){
+            return this.InternalSize == 0 || this.Count() == 0;
+        }
+
+        //Method to return if the Stack is Full
+        public bool isFull(){
+            return this.Fix && this.InternalSize == this.Limit;
         }
 
         //Implementation of the .Equals method
