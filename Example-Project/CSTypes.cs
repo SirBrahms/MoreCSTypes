@@ -240,6 +240,13 @@ namespace CSTypes
 
             return true;
         }
-        
+
+        //Destructor that empties the List to default(T) when the Class goes out of scope
+        ~FIFOQueue(){
+            for (int i = 0; i < this.Queue.Count(); i++)
+            {
+                this.Queue[i] = default(T)
+            }
+        }        
     }
 }
