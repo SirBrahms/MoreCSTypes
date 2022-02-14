@@ -1,4 +1,4 @@
-# CSDictionary
-A simple Project that adds the Dictionaries found in Python to C#
+# MoreCSTypes
+A simple Project that adds diffrent Objects like dictionaries to C#
 
 (Also I wanted to try out generics in C#)
