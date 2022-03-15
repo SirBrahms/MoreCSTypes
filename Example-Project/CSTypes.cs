@@ -22,9 +22,13 @@ namespace CSTypes
                 int indexOfKey = this.Key.FindIndex(a => a.Contains(key));
                 return this.Val.ElementAt(indexOfKey);
             }
-            catch (IndexOutOfRangeException ex)
+            catch (ArgumentNullException ex)
             {
-                throw new ArgumentException("Index is out of range / given key does not exist", nameof(key), ex);
+                throw new ArgumentException("Index is out of range / given key does not exist: " + key, nameof(key), ex);
+            }
+            catch (ArgumentOutOfRangeException ex)
+            {
+                throw new ArgumentException("Index is out of range / given key does not exist: " + key, ex);
             }
         }
 
@@ -41,7 +45,7 @@ namespace CSTypes
                 }
                 throw new ArgumentException("Given Value does not exist", nameof(val));
             }
-            catch (IndexOutOfRangeException ex)
+            catch (ArgumentOutOfRangeException ex)
             {
                 throw new ArgumentException("Index is out of range", nameof(val), ex);
             }
@@ -66,7 +70,7 @@ namespace CSTypes
                 this.Key.RemoveAt(index);
                 this.Val.RemoveAt(index);
             }
-            catch (IndexOutOfRangeException ex)
+            catch (ArgumentOutOfRangeException ex)
             {
                 throw new ArgumentException("Index is out of range", nameof(index), ex);
             }
@@ -79,7 +83,7 @@ namespace CSTypes
                 int indexOfKey = this.Key.FindIndex(a => a.Contains(key));
                 this.RemoveAt(indexOfKey);
             }
-            catch (IndexOutOfRangeException ex)
+            catch (ArgumentNullException ex)
             {
                 throw new ArgumentException("Given Key does not exist.", nameof(key), ex);
             }
@@ -97,7 +101,7 @@ namespace CSTypes
                     }
                 }
             }
-            catch (IndexOutOfRangeException ex)
+            catch (ArgumentOutOfRangeException ex)
             {
                 throw new ArgumentException("Given Value does not exist", nameof(val), ex);
             }
@@ -264,7 +268,7 @@ namespace CSTypes
         private int InternalSize = new int(); //Int for keeping track of the current size of the stack
 
         //empty Constructor for Dynamic Stacks
-        public Stack(){return;}
+        public Stack(){ return; }
         
         //Int Constructor for fixed-size Stacks
         public Stack(int limit){
@@ -305,9 +309,6 @@ namespace CSTypes
         public T Peek(){
             try
             {
-                if(Fix){
-                    this.InternalSize--;
-                }
                 return this.Stck[this.Stck.Count() - 1];
             }
             catch (ArgumentOutOfRangeException ex)
@@ -343,7 +344,7 @@ namespace CSTypes
 
         //Method to return if the Stack is empty
         public bool isEmpty(){
-            return this.InternalSize == 0 || this.Count() == 0;
+            return this.InternalSize == 0 && this.Count() == 0;
         }
 
         //Method to return if the Stack is Full
@@ -354,7 +355,7 @@ namespace CSTypes
         //Implementation of the .Equals method
         public bool Equals(Stack<T> stck)
         {
-            if (stck == null || GetType() != stck.GetType() || this.Count() != stck.Count()){
+            if (stck == null || GetType() != stck.GetType() || this.Count() != stck.Count() || this.Fix != stck.Fix || this.Limit != stck.Limit){
                 return false;
             }
 
